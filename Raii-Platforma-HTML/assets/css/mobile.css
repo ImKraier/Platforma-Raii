@@ -1,0 +1,9 @@
+@media only screen and (max-width: 992px) {
+    .kraier-mobile {
+        flex-direction: column;
+    }
+
+    .kraier-stats-mobile {
+        margin-top: 22px;
+    }
+}
