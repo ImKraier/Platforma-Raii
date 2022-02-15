@@ -12,7 +12,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [ViewIndexController::class, 'view'])->name('app.home');
     Route::get('/bans', [ViewBansController::class, 'view'])->name('app.bans');
     Route::get('/logout', [LoginController::class, 'logout']);
+
+    Route::prefix('admin')->middleware('isAdmin')->group(function () {
+        Route::get('/users', [AdminController::class, 'viewUsers'])->name('app.admin.users');
+        Route::get('/users/{user}', [AdminController::class, 'viewManageUser'])->name('app.admin.user');
+    });
 });
+
+Route::get('send/{email}', [RegisterController::class, 'sendVerificationEmail']);
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [ViewAuthController::class, 'viewLogin'])->name('app.login');
@@ -20,8 +27,4 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/register', [ViewAuthController::class, 'viewRegister'])->name('app.register');
     Route::post('/register/validate', [RegisterController::class, 'register']);
-});
-
-Route::prefix('admin')->group(function () {
-    Route::get('/users', [AdminController::class, 'viewUsers'])->name('app.admin.users');
 });

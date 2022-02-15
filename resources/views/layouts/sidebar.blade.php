@@ -21,10 +21,10 @@
             <li>
                 <a href="{{route('app.home')}}" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-home-lg-alt icon-style"></i><span class="sidebar-text">Acasa</span></a>
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-store icon-style"></i><span class="sidebar-text">Magazin</span></a>
-                <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-bullhorn icon-style"></i><span class="sidebar-text">Anuntui</span></a>
+                <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-bullhorn icon-style"></i><span class="sidebar-text">Anunturi</span></a>
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-book-open icon-style"></i><span class="sidebar-text">Regulament</span></a>
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-comment-alt icon-style"></i><span class="sidebar-text">Forum</span></a>
-                <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-server icon-style"></i><span class="sidebar-text">Servere Comunitatii</span></a>
+                <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-server icon-style"></i><span class="sidebar-text">Serverele Comunitatii</span></a>
                 <a href="{{route('app.bans')}}" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-ban icon-style"></i><span class="sidebar-text">Jucatori Banati</span></a>
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-file-chart-line icon-style"></i><span class="sidebar-text">Raport Jucatori/Staff</span></a>
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-life-ring icon-style"></i><span class="sidebar-text">Tichete Suport</span></a>

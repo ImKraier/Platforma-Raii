@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request) {
         if ($request->validated()) {
             if ($this->existsUser($request->email)) {
-                toastr()->error('Acest e-mail este deja folosit');
+                toastr()->error('Acest e-email este deja folosit');
                 return redirect()->back();
             }
 
@@ -37,7 +38,20 @@ class RegisterController extends Controller
                 Auth::login($create);
                 toastr()->success('Te-ai inregistrat cu success!');
             }
+//            self::sendVerificationEmail($request->email);
         }
         return redirect('/');
     }
+
+    public function sendVerificationEmail($email) {
+        $to_email = $email;
+        $details = [
+            'title' => 'Verification - Raii.ro',
+            'body' => 'test'
+        ];
+
+        Mail::to($to_email)->send(new \App\Mail\VerificationMail($details));
+    }
+
+
 }
