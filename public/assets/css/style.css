@@ -185,3 +185,83 @@ a:hover {
 .kraier-stats-mobile {
     width: 100px;
 }
+
+.paginate_button {
+    cursor: pointer;
+    background-color: var(--main-color);
+    border: 1px solid var(--border-color);
+    color: var(--main-text-color);
+    padding: .5rem .75rem;
+    text-decoration: none;
+}
+.paginate_button.previous {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.paginate_button.current {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+.paginate_button.next {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.paginate_button:first-child {
+    border-right: 0 !important;
+}
+.paginate_button:last-child {
+    border-left: 0 !important;
+}
+.dataTables_wrapper {
+    position: relative;
+}
+.dataTables_paginate {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.dataTables_length {
+    position: absolute;
+    top: 0;
+}
+.table > :not(caption) > * > * {
+    padding: 0.75rem 0.75rem !important;
+}
+.ellipsis {
+    padding: .5rem;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.dataTables_filter input {
+    box-shadow: unset;
+    background-color: var(--main-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+}
+
+.dataTables_filter input:focus-visible {
+    outline: none;
+}
+
+.dataTables_length select {
+    background-color: var(--main-color);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    color: white;
+    border-radius: 6px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding: 0 !important;
+}
+
+.btn:focus, .btn:active {
+    box-shadow: unset !important;
+}
