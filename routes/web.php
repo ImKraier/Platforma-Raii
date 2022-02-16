@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Views\ViewBansController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\ReportController;
 
 Route::middleware(['auth', 'isEmailVerified'])->group(function () {
     Route::get('/', [ViewIndexController::class, 'view'])->name('app.home');
@@ -30,6 +31,11 @@ Route::middleware(['auth', 'isEmailVerified'])->group(function () {
         Route::post('/close-ticket/{id}', [TicketsController::class, 'closeTicket'])->name('app.close.ticket');
         Route::post('/create-ticket', [TicketsController::class, 'createTicket'])->name('app.create.ticket');
         Route::post('/send-comment', [TicketsController::class, 'sendComment'])->name('app.create.comment');
+    });
+
+    Route::prefix('reports')->group(function () {
+        Route::get('/', [ReportController::class, 'viewReports'])->name('app.reports');
+        Route::post('/create-report', [ReportController::class, 'createReport'])->name('app.create.report');
     });
 });
 
