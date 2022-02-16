@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::get('send/{email}', [RegisterController::class, 'sendVerificationEmail']);
+Route::get('verify-email', [ViewAuthController::class, 'verifyEmail']);
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [ViewAuthController::class, 'viewLogin'])->name('app.login');
