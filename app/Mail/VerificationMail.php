@@ -17,9 +17,11 @@ class VerificationMail extends Mailable
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($details, $subject, $view)
     {
         $this->details = $details;
+        $this->subject = $subject;
+        $this->view = $view;
     }
 
     /**
@@ -29,6 +31,8 @@ class VerificationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.verification');
+        return $this->view($this->view)
+            ->subject($this->subject)
+            ->with($this->details);
     }
 }

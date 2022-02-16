@@ -271,3 +271,12 @@ div.dataTables_wrapper div.dataTables_info {
     font-size: 14px;
     border-radius: 6px;
 }
+
+.modal-content {
+    background-color: var(--main-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.modal-header, .modal-footer {
+    border-color: var(--border-color) !important;
+}

@@ -27,7 +27,7 @@
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-server icon-style"></i><span class="sidebar-text">Serverele Comunitatii</span></a>
                 <a href="{{route('app.bans')}}" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-ban icon-style"></i><span class="sidebar-text">Jucatori Banati</span></a>
                 <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-file-chart-line icon-style"></i><span class="sidebar-text">Raport Jucatori/Staff</span></a>
-                <a href="#" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-life-ring icon-style"></i><span class="sidebar-text">Tichete Suport</span></a>
+                <a href="{{route('app.tickets')}}" class="btn sidebar-btn d-flex align-items-center"><i class="far fa-life-ring icon-style"></i><span class="sidebar-text">Tichete Suport</span></a>
             </li>
         </ul>
     </div>

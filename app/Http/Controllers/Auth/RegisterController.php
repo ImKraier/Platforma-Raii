@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\VerificationMail;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -28,30 +29,30 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request) {
         if ($request->validated()) {
-            if ($this->existsUser($request->email)) {
-                toastr()->error('Acest e-email este deja folosit');
-                return redirect()->back();
-            }
-
             $create = User::create($request->except(['_token', 'repassword']));
             if ($create) {
+                $token = self::generateRandomString(24);
                 Auth::login($create);
+                $create->email_token = $token;
+                $create->save();
+                $details = [
+                    'target' => $request->uname,
+                    'confirm_link' => route('app.email.confirmation', ['token' => $token]),
+                ];
+                Mail::to($request->email)->send(new VerificationMail($details, "Confirmă adresa de e-mail", "emails.verification"));
                 toastr()->success('Te-ai inregistrat cu success!');
             }
-//            self::sendVerificationEmail($request->email);
         }
         return redirect('/');
     }
 
-    public function sendVerificationEmail($email) {
-        $to_email = $email;
-        $details = [
-            'title' => 'Verification - Raii.ro',
-            'body' => 'test'
-        ];
-
-        Mail::to($to_email)->send(new \App\Mail\VerificationMail($details));
+    public static function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
-
-
 }
