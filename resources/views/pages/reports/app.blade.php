@@ -17,7 +17,7 @@
                                 <i class="fal fa-user-shield me-4 fs-2 icon-style"></i>
                                 @endif
                                 <div class="server-width">
-                                    <h5 class="mb-1">Report #{{$key+1}}</h5>
+                                    <h5 class="mb-1"><a href="{{ route('app.manage.report', ['report' => $report->id]) }}">Report #{{$key+1}}</a></h5>
                                     <p class="m-0 text-second" >Rezolvat de: {{$report->solved_by_name}}</p>
                                 </div>
                             </div>

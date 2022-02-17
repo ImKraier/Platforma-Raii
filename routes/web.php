@@ -26,6 +26,7 @@ Route::middleware(['auth', 'isEmailVerified'])->group(function () {
         Route::prefix('reports')->group(function () {
             Route::get('/', [AdminController::class, 'viewReports'])->name('app.admin.reports');
             Route::get('{report}', [AdminController::class, 'viewManageReport'])->name('app.admin.report');
+            Route::post('/send-answer', [ReportController::class, 'sendAnswer'])->name('app.admin.report.send-answer');
         });
     });
 
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'isEmailVerified'])->group(function () {
 
     Route::prefix('reports')->group(function () {
         Route::get('/', [ReportController::class, 'viewReports'])->name('app.reports');
+        Route::get('/{report}', [ReportController::class, 'manageReport'])->name('app.manage.report');
         Route::post('/create-report', [ReportController::class, 'createReport'])->name('app.create.report');
     });
 });

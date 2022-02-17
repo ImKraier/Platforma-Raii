@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Reports;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReportRequest;
+use App\Http\Requests\AdminReportRequest;
 use App\Models\User;
 use Mail;
 Use App\Mail\VerificationMail;
@@ -35,5 +36,34 @@ class ReportController extends Controller
             }
         }
         return redirect()->back();
+    }
+
+    public function sendAnswer(AdminReportRequest $request) {
+        if($request->validated()) {
+            $report = Reports::where('id', $request->report_id)->first();
+            $report->answer = $request->answer;
+            $report->status = 2;
+            $report->solved_by = Auth::id();
+            $report->save();
+            $admin_name = Auth::user()->uname;
+            $details = [
+                'admin_name' => $admin_name,
+                'author_name' => $report->author_name,
+                'reported_name' => $report->reported_player,
+                'link' => route('app.manage.report', ['report' => $report->id]),
+            ];
+            $author = User::where('id', $report->author)->first();
+            Mail::to($author->email)->send(new VerificationMail($details, "Administratorul {$admin_name} ti-a raspuns la raport", "emails.report_answer"));
+            toastr()->success("I-ai raspuns cu succes lui {$request->author_name}");
+        }
+        return redirect()->back();
+    }
+
+    public function manageReport($report) {
+        $getReport = Reports::where('id', $report)->first();
+        if($getReport->author == Auth::id()) {
+            return view('pages.reports.view_report', compact('getReport'));
+        }
+        return redirect()->route('app.home');
     }
 }

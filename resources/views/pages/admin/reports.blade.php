@@ -16,10 +16,11 @@
         @foreach($reports as $key => $report)
             <tr>
                 <td><a href="{{ route('app.admin.report', ['report' => $report->id]) }}">{{$key+1}}</a></td>
-                <td>{{$report->report_type}}</td>
-                <td>{{$report->author_name}}</td>
+                <td>@if($report->report_type == 1) Jucator @else Admin @endif</td>
+                <td><a href="{{route('app.admin.user', ['user' => $report->author])}}">{{$report->author_name}}</a></td>
                 <td>{{$report->reported_player}}</td>
                 <td>@if($report->status == 0) Deschis @else Inchis @endif</td>
+                @if($report->answer != null) <td>{{$report->answer}}</td> @else <td>Fara raspuns</td> @endif
                 <td>{{$report->created_at}}</td>
             </tr>
         @endforeach
