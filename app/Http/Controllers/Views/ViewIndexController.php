@@ -17,7 +17,6 @@ class ViewIndexController extends Controller
         $onlinePlayers = $servers->sum('onlineplayers');
         $topPlayers = User::orderBy('played_time', 'DESC')->limit(5)->get();
         $lastBans = Bans::orderBy('id', 'DESC')->limit(5)->get();
-//        return dd($lastBans);
         return view('index', compact(['servers', 'bansCount', 'usersCount', 'onlinePlayers', 'topPlayers', 'lastBans']));
     }
 }
