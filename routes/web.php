@@ -23,6 +23,10 @@ Route::middleware(['auth', 'isEmailVerified'])->group(function () {
             Route::get('/{ticket}', [AdminController::class, 'viewManageTicket'])->name('app.admin.ticket');
             Route::post('/delete-ticket/{id}', [TicketsController::class, 'deleteTicket'])->name('app.delete.ticket');
         });
+        Route::prefix('reports')->group(function () {
+            Route::get('/', [AdminController::class, 'viewReports'])->name('app.admin.reports');
+            Route::get('{report}', [AdminController::class, 'viewManageReport'])->name('app.admin.report');
+        });
     });
 
     Route::prefix('tickets')->group(function () {

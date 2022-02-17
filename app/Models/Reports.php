@@ -32,4 +32,12 @@ class Reports extends Model
         }
         return 'Nimeni';
     }
+
+    public function getAuthorNameAttribute() {
+        $user = User::where('id', $this->author)->first();
+        if($user) {
+            return $user->uname;
+        }
+        return 'Nimeni';
+    }
 }
