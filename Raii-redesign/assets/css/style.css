@@ -149,7 +149,8 @@ a.square-btn:hover i {
 
 .unusual-text {
     color: var(--primary-color);
-    text-shadow: 0px 0px 14px var(--primary-color);
+    text-shadow: 0px 0px 10px #ce15377a;
+    font-weight: 600;
 }
 
 .server-content {
@@ -249,7 +250,7 @@ a.square-btn:hover i {
 .statistic-number {
     font-weight: 800;
     color: white;
-    text-shadow: 0px 0px 20px #ffffffb5;
+    text-shadow: 0px 0px 20px #ffffff4f;
     z-index: 3;
 }
 
@@ -302,4 +303,31 @@ a.square-btn:hover i {
 .bronze {
     color: #a74e29;
     text-shadow: 0px 0px 15px rgb(167, 78, 41, 0.50);
+}
+
+.mini-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.mini-profile .profile-tag {
+    font-size: 14px !important;
+    margin-top: -6px;
+    color: var(--sidebar-text-color) !important;
+    font-weight: 500;
+}
+
+.mini-profile p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.mini-profile {
+    background-color: var(--bg-dark);
+    padding: 12px;
+    border: 1px solid var(--bg-darkest);
+    border-radius: 12px;
+    margin-top: 22px;
 }

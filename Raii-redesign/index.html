@@ -15,21 +15,60 @@
             <div class="sidebar">
                 <h4>RAII</h4>
                 <ul class="list-unstyled text-center sidebar-list">
-                    <li class="active"><a href="#"><i class="fal fa-home fs-3"></i>Acasa</a></li>
-                    <li><a href="#"><i class="fal fa-home fs-3"></i>Acasa</a></li>
-                    <li><a href="#"><i class="fal fa-home fs-3"></i>Acasa</a></li>
-                    <li><a href="#"><i class="fal fa-home fs-3"></i>Acasa</a></li>
-                    <li><a href="#"><i class="fal fa-home fs-3"></i>Acasa</a></li>
+                    <li data-target="#acasa" class="active"><a href="#"><i class="fal fa-home fs-3"></i>Acasa</a></li>
+                    <li data-target="#test2"><a href="#"><i class="fal fa-home fs-3"></i>Test2</a></li>
+                    <li data-target="#test3"><a href="#"><i class="fal fa-home fs-3"></i>Test3</a></li>
+                    <li data-target="#test4"><a href="#"><i class="fal fa-home fs-3"></i>Test4</a></li>
+                    <li data-target="#test5"><a href="#"><i class="fal fa-home fs-3"></i>Test5</a></li>
                 </ul>
                 <div class="sidebar-bottom">
                     <a class="square-btn bg-primary"><i class="fal fa-sign-out"></i></a>
                 </div>
             </div>
-            <div class="semi-sidebar">
-                <a class="square-btn btn-secondary"><i class="fal fa-search"></i></a>
+            <div class="semi-sidebar d-flex flex-column justify-content-between">
                 <div>
-                    <h4 class="my-4">Acasa</h4>
-                    <div class="category-list show">
+                    <a class="square-btn btn-secondary"><i class="fal fa-search"></i></a>
+                    <div class="mini-profile">
+                        <div class="d-flex align-items-center">
+                            <img src="https://www.gravatar.com/avatar/8518559e5d193497ef745e329b2c93d3?s=160">
+                            <div>
+                                <p class="text-muted">kraier</p>
+                                <p class="text-muted profile-tag">Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="my-4" id="category-name">Acasa</h4>
+                    <div class="category-list show" id="acasa">
+                        <ul>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                        </ul>
+                    </div>
+                    <div class="category-list" id="test2">
+                        <ul>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                        </ul>
+                    </div>
+                    <div class="category-list" id="test3">
+                        <ul>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                        </ul>
+                    </div>
+                    <div class="category-list" id="test4">
+                        <ul>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                        </ul>
+                    </div>
+                    <div class="category-list" id="test5">
                         <ul>
                             <li><a href="#">Lorem Ipsum</a></li>
                             <li><a href="#">Lorem Ipsum</a></li>
@@ -40,9 +79,9 @@
                     </div>
                 </div>
                 <div class="social-media d-flex justify-content-center">
-                    <a class="square-btn bg-primary me-3"><i class="fab fa-discord"></i></a>
-                    <a class="square-btn bg-primary me-3"><i class="fab fa-youtube"></i></a>
-                    <a class="square-btn bg-primary"><i class="fab fa-facebook"></i></a>
+                    <a class="square-btn btn-secondary me-3"><i class="fab fa-discord"></i></a>
+                    <a class="square-btn btn-secondary me-3"><i class="fab fa-youtube"></i></a>
+                    <a class="square-btn btn-secondary"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
             <div class="content">
@@ -160,6 +199,7 @@
                     </div>
                 </section>
                 <section class="statistics mt-4">
+                    <h4 class="fw-ligher mb-4"><span class="unusual-text">STATISTICI</span> SI CONCURENTA</h4>
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <div class="statistic p-3 pb-0">
@@ -332,5 +372,7 @@
                 </section>
             </div>
         </div>
+        <script src="/assets/vendors/jquery/jquery.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
     </body>
 </html>
