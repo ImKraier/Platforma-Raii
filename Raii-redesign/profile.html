@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Raii Romania</title>
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro-v4-shims.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro-v4-font-face.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="all">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap/css/bootstrap.min.css">
+    <script src="/assets/vendors/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mobile.css">
+    <link rel="stylesheet" href="/assets/css/vars.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="d-flex">
+    <div class="sidebar">
+        <button class="mobile-collapse"><i class="fal fa-angle-double-left"></i></button>
+        <h4>RAII</h4>
+        <ul class="list-unstyled text-center sidebar-list">
+            <li data-target="#acasa" class="active"><button type="button"><i class="fal fa-home fs-3"></i>Acasa</button></li>
+            <li data-target="#test2"><button type="button"><i class="fal fa-home fs-3"></i>Test2</button></li>
+            <li data-target="#test3"><button type="button"><i class="fal fa-home fs-3"></i>Test3</button></li>
+            <li data-target="#test4"><button type="button"><i class="fal fa-home fs-3"></i>Test4</button></li>
+            <li data-target="#test5"><button type="button"><i class="fal fa-home fs-3"></i>Test5</button></li>
+        </ul>
+        <div class="sidebar-bottom">
+            <a class="square-btn bg-primary"><i class="fal fa-sign-out"></i></a>
+        </div>
+    </div>
+    <div class="semi-sidebar d-flex flex-column justify-content-between collapsed">
+        <div>
+            <a class="square-btn btn-secondary"><i class="fal fa-search"></i></a>
+            <div class="mini-profile">
+                <div class="d-flex align-items-center">
+                    <img src="https://www.gravatar.com/avatar/8518559e5d193497ef745e329b2c93d3?s=160">
+                    <div>
+                        <p class="text-muted">kraier</p>
+                        <p class="text-muted profile-tag">Developer</p>
+                    </div>
+                </div>
+            </div>
+            <h4 class="my-4" id="category-name">Acasa</h4>
+            <div class="category-list show" id="acasa">
+                <ul>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                </ul>
+            </div>
+            <div class="category-list" id="test2">
+                <ul>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                </ul>
+            </div>
+            <div class="category-list" id="test3">
+                <ul>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                </ul>
+            </div>
+            <div class="category-list" id="test4">
+                <ul>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                </ul>
+            </div>
+            <div class="category-list" id="test5">
+                <ul>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                    <li><a href="#">Lorem Ipsum</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center">
+            <p class="text-secondary">Copyright © Raii.Ro</p>
+            <div class="social-media d-flex justify-content-center">
+                <a class="square-btn btn-secondary me-3"><i class="fab fa-discord"></i></a>
+                <a class="square-btn btn-secondary me-3"><i class="fab fa-youtube"></i></a>
+                <a class="square-btn btn-secondary"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="content collapsed">
+        <section class="profile">
+            <div class="profile-header" style="background-image: url('https://raii.ro/forum/uploads/set_resources_67/84c1e40ea0e759e3f1505eb1788ddf3c_pattern.png')">
+                <div class="profile-badges">
+                    <div class="profile-badge">Admin</div>
+                    <div class="profile-badge">Banat</div>
+                </div>
+                <div class="profile-image d-flex flex-column justify-content-center align-items-center">
+                    <img src="https://www.gravatar.com/avatar/8518559e5d193497ef745e329b2c93d3?s=160">
+                    <h4 class="text-center mt-4 fw-bold text-uppercase">kraier</h4>
+                    <p class="m-0 text-positive text-uppercase fw-bolder text-center"><i class="fas fa-thumbs-up me-2"></i> 25% Positive Rating</p>
+                    <div class="d-flex mt-3">
+                        <button type="button" class="square-btn btn-secondary me-2"><i class="fas fa-thumbs-up"></i></button>
+                        <button type="button" class="square-btn btn-secondary"><i class="fas fa-thumbs-down"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="profile-stats">
+                    <div class="row">
+                        <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
+                            <i class="fas fa-fire fs-1 me-3 text-muted"></i>
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 text-muted fw-bold">100</h3>
+                                <p class="m-0 text-uppercase fw-bold text-secondary">Ucideri Totale</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
+                            <i class="fas fa-fire fs-1 me-3 text-muted"></i>
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 text-muted fw-bold">100</h3>
+                                <p class="m-0 text-uppercase fw-bold text-secondary">Decese Totale</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
+                            <i class="fas fa-fire fs-1 me-3 text-muted"></i>
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 text-muted fw-bold">100</h3>
+                                <p class="m-0 text-uppercase fw-bold text-secondary">Puncte Totale</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
+                            <i class="fas fa-fire fs-1 me-3 text-muted"></i>
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 text-muted fw-bold">23</h3>
+                                <p class="m-0 text-uppercase fw-bold text-secondary">K/D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-about">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="m-0 fw-bold text-uppercase">Despre</h5>
+                            <p class="text-muted mt-2 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac ultrices erat. Pellentesque tincidunt varius vulputate.</p>
+                            <div class="d-flex">
+                                <button type="button" class="btn btn-primary px-3 me-3">Adauga descriere</button>
+                                <button type="button" class="btn btn-secondary px-3">Sterge descrierea</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled profile-desc">
+                                <li class="text-secondary d-flex flex-row align-items-center mb-2"><i class="fal fa-map-marked-alt text-muted me-2 fs-5"></i>Din <strong class="ms-2 text-muted">Romania</strong></li>
+                                <li class="text-secondary d-flex flex-row align-items-center mb-2"><i class="fal fa-plus-circle text-muted me-2 fs-5"></i> A intrat acum <strong class="mx-2 text-muted">23</strong> de zile</li>
+                                <li class="text-secondary d-flex flex-row align-items-center mb-2"><i class="fal fa-signal text-muted me-2 fs-5"></i>Status <strong class="ms-2 text-muted">Online</strong></li>
+                                <li class="text-secondary d-flex flex-row align-items-center"><i class="fal fa-at text-muted me-2 fs-5"></i> E-mail <strong class="ms-2 text-muted">kraierm11@gmail.com</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr style="background: #404c68;">
+                    <h5 class="m-0 fw-bold text-uppercase">Serverele pe care a jucat</h5>
+                    <div class="played-server">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="m-0 fw-bold text-uppercase text-muted">CS.RAII.RO # CASTIGA 500RON!! ...</h6>
+                                <p class="m-0 text-secondary text-uppercase fw-bold">Jucatori Online <span class="text-muted">12/32</span></p>
+                            </div>
+                            <button type="button" class="btn btn-primary px-4 text-uppercase fw-bold">Joaca</button>
+                        </div>
+                    </div>
+                    <div class="played-server">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="m-0 fw-bold text-uppercase text-muted">CS.RAII.RO # CASTIGA 500RON!! ...</h6>
+                                <p class="m-0 text-secondary text-uppercase fw-bold">Jucatori Online <span class="text-muted">12/32</span></p>
+                            </div>
+                            <button type="button" class="btn btn-primary px-4 text-uppercase fw-bold">Joaca</button>
+                        </div>
+                    </div>
+                    <div class="played-server">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="m-0 fw-bold text-uppercase text-muted">CS.RAII.RO # CASTIGA 500RON!! ...</h6>
+                                <p class="m-0 text-secondary text-uppercase fw-bold">Jucatori Online <span class="text-muted">12/32</span></p>
+                            </div>
+                            <button type="button" class="btn btn-primary px-4 text-uppercase fw-bold">Joaca</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="/assets/vendors/jquery/jquery.min.js"></script>
+<script src="/assets/js/scripts.js"></script>
+</body>
+</html>
