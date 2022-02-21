@@ -14,7 +14,7 @@ use App\Http\Controllers\Views\ViewProfileController;
 Route::middleware(['auth', 'isEmailVerified'])->group(function () {
     Route::get('/', [ViewIndexController::class, 'view'])->name('app.home');
     Route::get('/bans', [ViewBansController::class, 'view'])->name('app.bans');
-    Route::get('/logout', [LoginController::class, 'logout']);
+    Route::get('/logout', [LoginController::class, 'logout'])->name('app.logout');
 
     Route::prefix('profile')->group(function () {
         Route::get('/', [ViewProfileController::class, 'viewProfile'])->name('app.profile');

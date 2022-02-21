@@ -1,146 +1,137 @@
 @extends('layouts.main')
 @section('main-container')
-<div class="row">
-    <div class="col-md-3">
-        <div class="border border-color p-4 rounded-3 mb-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h4 class="m-0">{{$onlinePlayers}}</h4>
-                    <p class="m-0">Jucatori Online</p>
-                </div>
-                <i class="fal fa-users fs-3 icon-style"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="border border-color p-4 rounded-3 mb-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h4 class="m-0">{{$bansCount}}</h4>
-                    <p class="m-0">Toate ban-urile</p>
-                </div>
-                <i class="fal fa-ban fs-3 icon-style"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="border border-color p-4 rounded-3 mb-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h4 class="m-0">{{$usersCount}}</h4>
-                    <p class="m-0">Utilizatori înregistrați</p>
-                </div>
-                <i class="fal fa-user-check fs-3 icon-style"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="border border-color p-4 rounded-3 mb-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h4 class="m-0">12</h4>
-                    <p class="m-0">Total administratori</p>
-                </div>
-                <i class="fal fa-user-crown fs-3 icon-style"></i>
-            </div>
-        </div>
-    </div>
-</div>
-<h5 class="mt-1 mb-4">Welcome back, {{ Auth::user()->uname }}</h5>
-<div class="border border-color rounded-3">
-    <div class="border-bottom border-color p-4">
-        <h6 class="m-0">Serverele Noastre</h6>
-    </div>
-    <div class="kraier-body">
+<section class="our-servers">
+    <h4 class="fw-ligher mb-4"><span class="unusual-text">SERVERELE</span> NOASTRE</h4>
+    <div class="row">
         @foreach($servers as $server)
-        <div class="kraier-card-section p-4 border-bottom border-color">
-            <div class="d-flex align-items-center justify-content-between kraier-mobile">
-                <div class="d-flex align-items-center">
-                    <i class="fal fa-server me-4 fs-2 icon-style"></i>
-                    <div class="server-width">
-                        <h5 class="mb-1">{{$server->hostname}}</h5>
-                        <p role="button" class="m-0 text-second serverip" >{{$server->ipaddress}}</p>
+        <div class="col-md-4">
+            <div class="server">
+                <div class="server-content">
+                    <div class="server-map">{{ $server->currentmap }}</div>
+                    <img src="/assets/images/cs_maps/de_dust2.png">
+                </div>
+                <h6 class="my-3 text-muted">{{ Str::limit($server->hostname, 32) }}</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="m-0 text-muted">Jucatori Online</p>
+                        <h6 class="m-0">{{ $server->onlineplayers }}/{{ $server->maxplayers }}</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="m-0 text-muted">Admini Online</p>
+                        <h6 class="m-0">{{ $server->onlineadmins }}</h6>
                     </div>
                 </div>
-                <div class="d-flex align-items-center flex-column kraier-stats-mobile">
-                    <div class="d-flex align-items-center flex-column">
-                        <i class="fal fa-users icon-style fs-2 mb-2"></i>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <a href="#" class="btn btn-secondary w-100">Detalii</a>
                     </div>
-                    <p class="m-0">{{$server->onlineplayers}}/{{$server->maxplayers}}</p>
-                </div>
-                <div class="d-flex align-items-center flex-column kraier-stats-mobile">
-                    <div class="d-flex align-items-center flex-column">
-                        <i class="fal fa-map-marked-alt icon-style fs-2 mb-2"></i>
+                    <div class="col-md-6">
+                        <a href="#" class="btn btn-primary w-100">Joaca</a>
                     </div>
-                    <p class="m-0">{{$server->currentmap}}</p>
-                </div>
-                <div class="d-flex align-items-center flex-column kraier-stats-mobile">
-                    <div class="d-flex align-items-center flex-column">
-                        <i class="fal fa-map icon-style fs-2 mb-2"></i>
-                    </div>
-                    <p class="m-0">{{$server->nextmap}}</p>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
-</div>
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="border border-color rounded-3">
-            <div class="border-bottom border-color p-4">
-                <h6 class="m-0">Topul jucatorilor</h6>
-            </div>
-            <div class="kraier-body">
-                @foreach($topPlayers as $topPlayer)
-                <div class="kraier-card-section p-4 border-bottom border-color">
-                    <div class="d-flex align-items-center justify-content-between kraier-mobile">
-                        <div class="d-flex align-items-center">
-                            <i class="fal fa-user me-4 fs-2 icon-style"></i>
-                            <div>
-                                <h5 class="mb-1">{{$topPlayer->uname}}</h5>
-                                <p class="m-0 text-second" >{{$topPlayer->authid}}</p>
+</section>
+<section class="statistics mt-4">
+    <h4 class="fw-ligher mb-4"><span class="unusual-text">STATISTICI</span> SI CONCURENTA</h4>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="statistic p-3 pb-0">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="statistic-bg">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <i class="fal fa-user statistic-icon"></i>
+                                <h6 class="mb-2 text-muted text-center">Jucatori Online</h6>
+                                <h5 class="m-0 statistic-number">{{$onlinePlayers}}</h5>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center flex-column kraier-stats-mobile">
-                            <div class="d-flex align-items-center flex-column">
-                                <i class="fal fa-clock icon-style fs-2 mb-2"></i>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="statistic-bg">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <i class="fal fa-ban statistic-icon"></i>
+                                <h6 class="mb-2 text-muted text-center">Interdictii</h6>
+                                <h5 class="m-0 statistic-number">{{$bansCount}}</h5>
                             </div>
-                            <p class="m-0">{{round($topPlayer->played_time / 3600, 2, PHP_ROUND_HALF_UP)}}h</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="statistic-bg">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <i class="fal fa-users statistic-icon"></i>
+                                <h6 class="mb-2 text-muted text-center">Utilizatori</h6>
+                                <h5 class="m-0 statistic-number">{{ $usersCount }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="statistic-bg">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <i class="fal fa-user-shield statistic-icon"></i>
+                                <h6 class="mb-2 text-muted text-center">Administratori</h6>
+                                <h5 class="m-0 statistic-number">20</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="border border-color rounded-3">
-            <div class="border-bottom border-color p-4">
-                <h6 class="m-0">Ultimele sanctiuni</h6>
-            </div>
-            <div class="kraier-body">
-                @foreach($lastBans as $lastBan)
-                <div class="kraier-card-section p-4 border-bottom border-color">
-                    <div class="d-flex align-items-center justify-content-between kraier-mobile">
-                        <div class="d-flex align-items-center">
-                            <i class="fal fa-ban me-4 fs-2 icon-style"></i>
-                            <div>
-                                <h5 class="mb-1">{{$lastBan->victim_name}}</h5>
-                                <p class="m-0 text-second" >Administrator: {{$lastBan->admin_name}}</p>
+        <div class="col-md-4">
+            <div class="data-table mb-3">
+                <div class="data-header">
+                    <h6 class="text-muted">TOP Jucatori</h6>
+                </div>
+                <div class="data-content">
+                    <div class="data-content-header d-flex align-items-center">
+                        <p class="m-0 text-muted me-3">Rank</p>
+                        <p class="m-0 text-muted">Jucator</p>
+                    </div>
+                    @foreach($topPlayers as $key => $topPlayer)
+                    <div class="data-column">
+                        <p class="m-3 fw-bold text-muted">{{ $key+1 }}</p>
+                        <div class="d-flex justify-content-between w-100 m-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img class="mx-2" src="https://www.gravatar.com/avatar/8518559e5d193497ef745e329b2c93d3?s=160">
+                                <p class="m-0 text-muted fw-bold">{{ Str::limit($topPlayer->uname, 10) }}</p>
                             </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column kraier-stats-mobile">
-                            <div class="d-flex align-items-center flex-column">
-                                <i class="fal fa-clock icon-style fs-2 mb-2"></i>
-                            </div>
-                            <p class="m-0 text-center">{{gmdate("Y-m-d H:m", $lastBan->bantime)}}</p>
+                            @if($key+1 <= 3)
+                            <i class="fas fa-trophy @if($key+1 == 1) gold @elseif($key+1 == 2) silver @elseif($key+1 == 3) bronze @endif d-flex justify-content-center align-items-center fs-4"></i>
+                            @endif
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="data-table mb-3">
+                <div class="data-header">
+                    <h6 class="text-muted">Ultimele sanctiuni</h6>
+                </div>
+                <div class="data-content">
+                    <div class="data-content-header d-flex align-items-center">
+                        <p class="m-0 text-muted me-4">#</p>
+                        <p class="m-0 text-muted me-3">Jucator</p>
+                        <p class="m-0 text-muted">Administrator</p>
+                    </div>
+                    @foreach($lastBans as $key => $lastBan)
+                    <div class="data-column">
+                        <div class="d-flex align-items-center py-2">
+                            <p class="m-3 fw-bold text-muted">{{ $key+1 }}</p>
+                            <div class="d-flex justify-content-center align-items-center me-5">
+                                <img class="mx-2" src="https://www.gravatar.com/avatar/8518559e5d193497ef745e329b2c93d3?s=160">
+                                <p class="m-0 text-muted fw-bold">{{ Str::limit($lastBan->victim_name, 5) }}</p>
+                            </div>
+                            <p class="m-0 text-muted fw-bold">{{ Str::limit($lastBan->admin_name, 10) }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

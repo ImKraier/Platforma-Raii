@@ -24,7 +24,7 @@ class ViewAuthController extends Controller
     {
         $user = Auth::user();
         if($user->is_email_verified == 0) {
-            if($user->is_email_verified != 1 && $user->email_token == null) {
+            if($user->email_token == null) {
                 $token = RegisterController::generateRandomString(24);
                 $user->email_token = $token;
                 $user->save();
@@ -34,7 +34,7 @@ class ViewAuthController extends Controller
                 ];
                 Mail::to($user->email)->send(new VerificationMail($details, "Confirmă adresa de e-mail", "emails.verification"));
                 return view('pages.auth.verify');
-            } else if($user->is_email_verified != 1) {
+            } else {
                 $token = $user->email_token;
                 $details = [
                     'target' => $user->uname,

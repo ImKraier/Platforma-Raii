@@ -1,0 +1,20 @@
+:root {
+    --primary-color: #ce1537;
+    --primary-color-hover: #9b102a;
+    --bg-dark: #161b25;
+    --bg-darker: #1a1f2a;
+    --bg-darkest: #222837;
+    --sidebar-text-color: #404c68;
+    --sidebar-text-color-hover: #5f6f9a;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-darkest);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 20px;
+}
