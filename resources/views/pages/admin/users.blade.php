@@ -16,7 +16,7 @@
         @foreach($users as $key => $user)
             <tr>
                 <td>{{$key+1}}</td>
-                <td><a href="{{ route('app.admin.user', ['user' => $user->id]) }}">{{$user->uname}}</a>@if($user->vip_level > 0)<i class="ms-2 fs-6 fal fa-crown text-warning"></i>@endif</td>
+                <td><a class="text-decoration-none" href="{{ route('app.profile.user', ['userId' => $user->id]) }}">{{$user->uname}}</a>@if($user->vip_level > 0)<i class="ms-2 fs-6 fal fa-crown text-warning"></i>@endif</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->ip}}</td>
                 <td>{{$user->cs_points + $user->csgo_points}}</td>

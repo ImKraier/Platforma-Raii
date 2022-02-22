@@ -11,14 +11,13 @@ use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Views\ViewProfileController;
 
-Route::middleware(['auth', 'isEmailVerified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/', [ViewIndexController::class, 'view'])->name('app.home');
     Route::get('/bans', [ViewBansController::class, 'view'])->name('app.bans');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('app.logout');
 
     Route::prefix('profile')->group(function () {
         Route::get('/', [ViewProfileController::class, 'viewProfile'])->name('app.profile');
-        Route::get('/{user}', [ViewProfileController::class, 'viewUserProfile'])->name('app.profile.user');
+        Route::get('/{userId}', [ViewProfileController::class, 'viewUserProfile'])->name('app.profile.user');
     });
 
     Route::prefix('admin')->middleware('isAdmin')->group(function () {
@@ -56,8 +55,12 @@ Route::middleware(['auth', 'isEmailVerified'])->group(function () {
         Route::get('confirmation/{token}', [ViewAuthController::class, "confirmation"])->name('app.email.confirmation');
     });
 
-    Route::get('verify-email', [ViewAuthController::class, 'verifyEmail'])->name('app.verify.email');
 });
+
+Route::get('verify-email', [ViewAuthController::class, 'verifyEmail'])->middleware('auth')->name('app.verify.email');
+
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('app.logout');
+
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [ViewAuthController::class, 'viewLogin'])->name('app.login');

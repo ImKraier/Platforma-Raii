@@ -9,7 +9,7 @@
                 <h4 class="mb-3">Verifică adresa de e-mail</h4>
                 <p class="mb-3">Un e-mail a fost trimis către adresa <strong>{{Auth::user()->email}}</strong>, verifică adresa de e-mail pentru mai multe informații.</p>
                 <p class="mb-3">In cazul in care nu ai primit nici un e-mail, apasa pe buton de mai jos pentru a retrimite.</p>
-                <button type="submit" class="btn btn-primary w-100 text-white">Retrimite</button>
+                <button type="submit" class="btn btn-secondary w-100 text-white py-3 text-uppercase">Retrimite</button>
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Servers;
 use App\Models\Bans;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ViewIndexController extends Controller
 {
@@ -17,6 +18,7 @@ class ViewIndexController extends Controller
         $onlinePlayers = $servers->sum('onlineplayers');
         $topPlayers = User::orderBy('played_time', 'DESC')->limit(5)->get();
         $lastBans = Bans::orderBy('id', 'DESC')->limit(5)->get();
-        return view('index', compact(['servers', 'bansCount', 'usersCount', 'onlinePlayers', 'topPlayers', 'lastBans']));
+        $user = Auth::user();
+        return view('index', compact(['servers', 'bansCount', 'usersCount', 'onlinePlayers', 'topPlayers', 'lastBans', 'user']));
     }
 }

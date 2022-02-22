@@ -4,7 +4,7 @@
     <h4 class="fw-ligher mb-4"><span class="unusual-text">SERVERELE</span> NOASTRE</h4>
     <div class="row">
         @foreach($servers as $server)
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="server">
                 <div class="server-content">
                     <div class="server-map">{{ $server->currentmap }}</div>

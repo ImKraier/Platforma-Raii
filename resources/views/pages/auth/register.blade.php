@@ -14,7 +14,7 @@
                 <input type="password" class="custom-input mb-3" name="upassword" placeholder="Introduceti parola" autocomplete="off">
                 <input type="password" class="custom-input mb-4" name="repassword" placeholder="Reintroduceti parola" autocomplete="off">
                 <button type="submit" class="btn btn-primary w-100 text-white mb-3 py-3 text-uppercase">Inregistreaza-te</button>
-                <button type="button" class="btn btn-secondary w-100 text-white mb-3 py-3 text-uppercase">Logheaza-te</button>
+                <a href="{{ route('app.login') }}" class="btn btn-secondary w-100 text-white mb-3 py-3 text-uppercase">Logheaza-te</a>
             </form>
         </div>
     </div>

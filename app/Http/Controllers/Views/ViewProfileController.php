@@ -8,20 +8,22 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reports;
 use App\Models\Tickets;
+use App\Models\Bans;
 
 class ViewProfileController extends Controller
 {
     public function viewProfile() {
-        $getUser = User::where('id', Auth::id())->first();
-        $reports = Reports::where('author', Auth::id())->get();
-        $tickets = Tickets::where('author', Auth::id())->get();
-        return view('pages.profile.profile', compact(['getUser', 'reports', 'tickets']));
+        return redirect()->route('app.profile.user', ['userId' => Auth::id()]);
     }
 
-    public function viewUserProfile($user) {
-        $getUser = User::where('id', $user)->first();
-        $reports = Reports::where('author', $user)->get();
-        $tickets = Tickets::where('author', $user)->get();
-        return view('pages.profile.profile', compact(['getUser', 'reports', 'tickets']));
+    public function viewUserProfile($userId) {
+        $user = User::where('id', $userId)->first();
+        $reports = Reports::where('author', $userId)->get();
+        $tickets = Tickets::where('author', $userId)->get();
+        $isUserBanned = false;
+        if(Bans::where('victim_steamid', 'LIKE', "%{$user->authid}%")->orWhere('victim_steamid', 'LIKE', "%{$user->ip}%")->count() > 0) {
+            $isUserBanned = true;
+        }
+        return view('pages.profile.userProfile', compact(['user', 'reports', 'tickets', 'isUserBanned']));
     }
 }

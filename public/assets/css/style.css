@@ -48,7 +48,29 @@ a:hover {
     text-shadow: 0px 0px 20px var(--primary-color);
 }
 
-.sidebar button:hover {
+.sidebar a {
+    background-color: unset;
+    border: unset;
+    color: var(--sidebar-text-color);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.sidebar a i {
+    margin-bottom: 6px;
+    transition: all 0.3s;
+}
+
+.sidebar a:hover i {
+    color: var(--primary-color);
+    text-shadow: 0px 0px 20px var(--primary-color);
+}
+
+.sidebar a:hover {
     color: var(--sidebar-text-color-hover);
 }
 
@@ -67,6 +89,14 @@ a:hover {
     text-shadow: 0px 0px 20px var(--primary-color) !important;
 }
 .sidebar-list li.active button {
+    color: var(--sidebar-text-color-hover);
+}
+
+.sidebar-list li.active a i {
+    color: var(--primary-color) !important;
+    text-shadow: 0px 0px 20px var(--primary-color) !important;
+}
+.sidebar-list li.active a {
     color: var(--sidebar-text-color-hover);
 }
 
@@ -124,6 +154,20 @@ a.square-btn:hover i {
 }
 
 .category-list li a:hover {
+    color: var(--primary-color);
+}
+
+.category-list li button {
+    background: unset;
+    color: var(--sidebar-text-color);
+    padding: 0px;
+    border: 0px;
+    text-align: left;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.category-list li button:hover {
     color: var(--primary-color);
 }
 
@@ -481,4 +525,130 @@ section.profile {
     background-color: var(--bg-darker);
     border-radius: 12px;
     padding: 60px 45px;
+}
+
+.modal-content {
+    background-color: var(--bg-darker) !important;
+    border: 1px solid var(--bg-darkest) !important;
+}
+
+.border-color {
+    border-color: var(--bg-darkest) !important;
+}
+
+.modal-header {
+    border-color: var(--bg-darkest) !important;
+}
+
+.modal-footer {
+    border-color: var(--bg-darkest) !important;
+}
+
+.kraier-header {
+    background-color: var(--bg-darker);
+    border-color: var(--bg-darkest);
+    border-bottom: 1px solid var(--bg-darkest) !important;
+}
+
+.kraier-card-section {
+    font-weight: 500;
+}
+
+.kraier-card-section:last-child {
+    border: 0 !important;
+}
+
+.icon-style {
+    color: var(--primary-color);
+    text-shadow: 0px 0px 20px var(--primary-color) !important;
+}
+
+.bg-secondary {
+    background-color: var(--bg-darker) !important;
+}
+
+.bg-second {
+    background-color: var(--bg-darkest) !important;
+    font-weight: 500;
+    color: #7485ab;
+}
+
+.fw-500 {
+    font-weight: 500 !important;
+}
+
+.paginate_button {
+    cursor: pointer;
+    background-color: var(--bg-darkest);
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: .5rem .75rem;
+    text-decoration: none;
+}
+.paginate_button.previous {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.paginate_button.current {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+.paginate_button.next {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.paginate_button:first-child {
+    border-right: 0 !important;
+}
+.paginate_button:last-child {
+    border-left: 0 !important;
+}
+.dataTables_wrapper {
+    position: relative;
+}
+.dataTables_paginate {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.dataTables_length {
+    position: absolute;
+    top: 0;
+}
+.table > :not(caption) > * > * {
+    padding: 0.75rem 0.75rem !important;
+}
+.ellipsis {
+    padding: .5rem;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.dataTables_filter input {
+    box-shadow: unset;
+    background-color: var(--bg-darkest);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+}
+
+.dataTables_filter input:focus-visible {
+    outline: none;
+}
+
+.dataTables_length select {
+    background-color: var(--bg-darkest);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    color: white;
+    border-radius: 6px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding: 0 !important;
 }

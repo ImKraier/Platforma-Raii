@@ -84,11 +84,12 @@ class TicketsController extends Controller
     }
 
     public function closeTicket($id) {
-        $ticket = Tickets::find($id)->firstOrFail();
-        if($ticket->author == Auth::id() || Auth::user()->admin_level > 0) {
+        $ticket = Tickets::where('id', $id)->firstOrFail();
+        if($ticket->author == Auth::id() || Auth::user()->admin_level > 0 || $ticket->status != 1) {
             $ticket->status = 1;
             $ticket->save();
             toastr()->success('Ai inchis cu succes tichetul');
+            return redirect()->route('app.tickets');
         } else {
             toastr()->error('Nu poti face asta.');
         }
