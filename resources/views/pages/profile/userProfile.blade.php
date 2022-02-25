@@ -9,8 +9,12 @@
             @if($isUserBanned)
             <div class="profile-badge">Banat</div>
             @endif
-            @if($user->vip_level > 0)
-            <div class="profile-badge">VIP</div>
+            @if($user->vip_level == 1)
+            <div class="profile-badge">VIP Silver</div>
+            @elseif($user->vip_level == 2)
+            <div class="profile-badge">VIP Gold</div>
+            @elseif($user->vip_level == 3)
+            <div class="profile-badge">VIP Diamond</div>
             @endif
         </div>
         <div class="profile-image d-flex flex-column justify-content-center align-items-center">
@@ -98,7 +102,7 @@
                 </div>
             </div>
             <hr style="background: #404c68;">
-            <h5 class="m-0 fw-bold text-uppercase">Serverele pe care a jucat</h5>
+            <h5 class="m-0 fw-bold text-uppercase">Istoric servere</h5>
             <div class="played-server">
                 <div class="d-flex justify-content-between">
                     <div>

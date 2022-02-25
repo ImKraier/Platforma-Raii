@@ -8,7 +8,7 @@
             <form method="POST" action="/login/validate" class="col-md-5 login-form m-auto">
                 @csrf
                 <h4>Logheaza-te</h4>
-                <p class="m-0 text-muted mb-4">Nu ai un cont? <a class="text-decoration-none" href="#">Inregistreaza-te</a></p>
+                <p class="m-0 text-muted mb-4">Nu ai un cont? <a class="text-decoration-none" href="{{ route('app.register') }}">Inregistreaza-te</a></p>
                 <input type="text" class="custom-input mb-3" name="email" placeholder="Introduceti adresa de e-mail" autocomplete="off">
                 <input type="password" class="custom-input mb-3" name="password" placeholder="Introduceti parola" autocomplete="off">
                 <button type="submit" class="btn btn-primary w-100 text-white mb-3 py-3 text-uppercase">Logheaza-te</button>

@@ -24,7 +24,7 @@
                             <div class="d-flex align-items-center flex-column kraier-stats-mobile">
                                 @if($report->status == 0)
                                     <div class="d-flex align-items-center flex-column">
-                                        <i class="fal fa-check-circle icon-style fs-2 mb-2"></i>
+                                        <i class="fal fa-check-circle icon-style-green fs-2 mb-2"></i>
                                     </div>
                                     <p class="m-0">Deschis</p>
                                 @elseif($report->status == 1)

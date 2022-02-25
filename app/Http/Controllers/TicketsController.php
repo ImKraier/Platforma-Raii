@@ -52,7 +52,9 @@ class TicketsController extends Controller
                             'title' => $ticket->title,
                             'link' => route('app.admin.ticket', ['ticket' => $ticket->id])
                         ];
-                        Mail::to($email)->send(new VerificationMail($details, "Ai primit un raspuns la tichetul {$ticket->title}", "emails.new_comment"));
+                        if($create->author != $ticket->author) {
+                            Mail::to($email)->send(new VerificationMail($details, "Ai primit un raspuns la tichetul {$ticket->title}", "emails.new_comment"));
+                        }
                         toastr()->success('Ai trimis cu succes un nou comentariu');
                     }
                 } else {
@@ -65,7 +67,9 @@ class TicketsController extends Controller
                             'title' => $ticket->title,
                             'link' => route('app.manage.ticket', ['id' => $ticket->id])
                         ];
-                        Mail::to($email)->send(new VerificationMail($details, "Ai primit un raspuns la tichetul {$ticket->title}", "emails.new_comment"));
+                        if($create->author != $ticket->author) {
+                            Mail::to($email)->send(new VerificationMail($details, "Ai primit un raspuns la tichetul {$ticket->title}", "emails.new_comment"));
+                        }
                         toastr()->success('Ai trimis cu succes un nou comentariu');
                     }
                 }
