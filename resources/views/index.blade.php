@@ -4,7 +4,7 @@
     <h4 class="fw-ligher mb-4"><span class="unusual-text">SERVERELE</span> NOASTRE</h4>
     <div class="row">
         @foreach($servers as $server)
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <div class="server">
                 <div class="server-content">
                     <div class="server-map">{{ $server->currentmap }}</div>
@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="data-table mb-3">
                 <div class="data-header">
                     <h6 class="text-muted">TOP Jucatori</h6>
@@ -104,7 +104,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="data-table table-responsive">
                 <div class="data-header">
                     <h6 class="text-muted">Ultimele sanctiuni</h6>

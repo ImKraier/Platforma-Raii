@@ -34,8 +34,8 @@
                 <li><a href="{{ route('app.home') }}">Acasa</a></li>
                 <li><a href="#">Magazin</a></li>
                 <li><a href="#">Regulament</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">Jucatori Banati</a></li>
+                <li><a href="https://raii.ro/forum" target="_blank">Forum</a></li>
+                <li><a href="{{ route('app.bans') }}">Jucatori Banati</a></li>
             </ul>
         </div>
         <div class="category-list" id="tickets">

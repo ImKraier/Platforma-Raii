@@ -35,6 +35,8 @@ $(document).ready(function () {
         changeActiveLi('reports');
     } else if(window.location.pathname.includes('admin')) {
         changeActiveLi('admin');
+    } else if(window.location.pathname.includes('bans')) {
+        changeActiveLi('acasa');
     }
 });
 
