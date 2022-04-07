@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tickets;
 use App\Models\Reports;
+use App\Models\Shop;
 
 class AdminController extends Controller
 {
@@ -37,5 +38,10 @@ class AdminController extends Controller
     public function viewManageReport($report) {
         $getReport = Reports::where('id', $report)->firstOrFail();
         return view('pages.admin.manageReport', compact('getReport'));
+    }
+
+    public function viewProducts() {
+        $items = Shop::get();
+        return view('pages.admin.manageProducts', compact('items'));
     }
 }

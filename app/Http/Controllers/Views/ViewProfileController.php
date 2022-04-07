@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Reports;
 use App\Models\Tickets;
 use App\Models\Bans;
+use App\Http\Requests\DescriptionRequest;
 
 class ViewProfileController extends Controller
 {
@@ -25,5 +26,20 @@ class ViewProfileController extends Controller
             $isUserBanned = true;
         }
         return view('pages.profile.userProfile', compact(['user', 'reports', 'tickets', 'isUserBanned']));
+    }
+
+    public function addDescription(DescriptionRequest $request) {
+        $user = User::where('id', Auth::user()->id)->first();
+        switch ($request->input('action')) {
+            case 'add':
+                $description = $request->profile_description;
+                $user->profile_description = $description;
+                $user->save();
+                return redirect()->back();
+            case 'remove':
+                $user->profile_description = 'NONE';
+                $user->save();
+                return redirect()->back();
+        }
     }
 }

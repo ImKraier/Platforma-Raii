@@ -33,14 +33,14 @@
                 <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
                     <i class="fas fa-fire fs-1 me-3 text-muted"></i>
                     <div class="d-flex flex-column">
-                        <h3 class="m-0 text-muted fw-bold">100</h3>
+                        <h3 class="m-0 text-muted fw-bold">{{ $user->total_kills }}</h3>
                         <p class="m-0 text-uppercase fw-bold text-secondary">Ucideri Totale</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
                     <i class="fas fa-fire fs-1 me-3 text-muted"></i>
                     <div class="d-flex flex-column">
-                        <h3 class="m-0 text-muted fw-bold">100</h3>
+                        <h3 class="m-0 text-muted fw-bold">{{ $user->total_deaths }}</h3>
                         <p class="m-0 text-uppercase fw-bold text-secondary">Decese Totale</p>
                     </div>
                 </div>
@@ -54,7 +54,11 @@
                 <div class="col-md-3 d-flex flex-row align-items-center justify-content-center">
                     <i class="fas fa-fire fs-1 me-3 text-muted"></i>
                     <div class="d-flex flex-column">
-                        <h3 class="m-0 text-muted fw-bold">23</h3>
+                        @if($user->total_kills > 0 || $user->total_deaths > 0)
+                            <h3 class="m-0 text-muted fw-bold">{{ $user->total_kills / $user->total_deaths }}</h3>
+                        @else
+                            <h3 class="m-0 text-muted fw-bold">0</h3>
+                        @endif
                         <p class="m-0 text-uppercase fw-bold text-secondary">K/D</p>
                     </div>
                 </div>
@@ -65,14 +69,20 @@
                 <div class="col-md-6">
                     <h5 class="m-0 fw-bold text-uppercase">Despre</h5>
                     @if($user->profile_description != 'NONE')
-                    <p class="text-muted mt-2 mb-3">{{ $user->profile_description }}</p>
+                        <p class="text-muted mt-2 mb-3">{{ $user->profile_description }}</p>
                     @else
                         <p class="text-muted mt-2 mb-3"><span class="text-capitalize">{{ $user->uname }}</span> nu are nici o descriere pusa.</p>
                     @endif
-                    <div class="d-flex">
-                        <button type="button" class="btn btn-primary px-3 me-3">Adauga descriere</button>
-                        <button type="button" class="btn btn-secondary px-3">Sterge descrierea</button>
-                    </div>
+                    @if($user->id == Auth::user()->id)
+                        <form method="POST" action="{{ route('app.profile.description') }}">
+                            @csrf
+                            <textarea class="form-control mb-3" name="profile_description" placeholder="Descrierea ta..."></textarea>
+                            <div class="d-flex">
+                                <button type="submit" class="btn btn-primary px-3 me-3" name="action" value="add">Adauga descriere</button>
+                                <button type="submit" class="btn btn-secondary px-3" name="action" value="remove">Sterge descrierea</button>
+                            </div>
+                        </form>
+                    @endif
                 </div>
                 <div class="col-md-6">
                     <ul class="list-unstyled profile-desc">

@@ -9,6 +9,7 @@ use App\Http\Controllers\Views\ViewBansController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Views\ViewProfileController;
 
 Route::middleware(['auth'])->group(function () {
@@ -18,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('profile')->group(function () {
         Route::get('/', [ViewProfileController::class, 'viewProfile'])->name('app.profile');
         Route::get('/{userId}', [ViewProfileController::class, 'viewUserProfile'])->name('app.profile.user');
+        Route::post('/add-description', [ViewProfileController::class, 'addDescription'])->name('app.profile.description');
     });
 
     Route::prefix('admin')->middleware('isAdmin')->group(function () {
@@ -34,6 +36,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [AdminController::class, 'viewReports'])->name('app.admin.reports');
             Route::get('/{report}', [AdminController::class, 'viewManageReport'])->name('app.admin.report');
             Route::post('/send-answer', [ReportController::class, 'sendAnswer'])->name('app.admin.report.send-answer');
+        });
+        Route::prefix('shop')->group(function () {
+            Route::get('/', [AdminController::class, 'viewProducts'])->name('app.admin.products');
+            Route::post('/add-product', [ShopController::class, 'addProduct'])->name('app.admin.product.add');
+            Route::post('/remove-product', [ShopController::class, 'removeProduct'])->name('app.admin.product.remove');
         });
     });
 
@@ -53,6 +60,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('email')->group(function () {
         Route::get('confirmation/{token}', [ViewAuthController::class, "confirmation"])->name('app.email.confirmation');
+    });
+
+    Route::prefix('shop')->group(function () {
+        Route::get('/', [ShopController::class, 'view'])->name('app.shop');
+        Route::post('/buy-product/{id}', [ShopController::class, 'buyProduct'])->name('app.shop.buy');
     });
 
 });

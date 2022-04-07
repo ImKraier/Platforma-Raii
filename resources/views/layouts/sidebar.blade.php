@@ -32,7 +32,7 @@
         <div class="category-list show" id="acasa">
             <ul>
                 <li><a href="{{ route('app.home') }}">Acasa</a></li>
-                <li><a href="#">Magazin</a></li>
+                <li><a href="{{ route('app.shop') }}">Magazin</a></li>
                 <li><a href="#">Regulament</a></li>
                 <li><a href="https://raii.ro/forum" target="_blank">Forum</a></li>
                 <li><a href="{{ route('app.bans') }}">Jucatori Banati</a></li>
@@ -56,6 +56,7 @@
                 <li><a href="{{ route('app.admin.users') }}">Utilizatori</a></li>
                 <li><a href="{{ route('app.admin.tickets') }}">Tichete</a></li>
                 <li><a href="{{ route('app.admin.reports') }}">Rapoarte</a></li>
+                <li><a href="{{ route('app.admin.products') }}">Produse</a></li>
             </ul>
         </div>
         @endif

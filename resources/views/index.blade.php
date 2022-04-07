@@ -109,32 +109,36 @@
                 <div class="data-header">
                     <h6 class="text-muted">Ultimele sanctiuni</h6>
                 </div>
-                <table class="table table-dark">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Jucator</th>
-                        <th scope="col">Administrator</th>
-                        <th scope="col">Motiv</th>
-                        <th scope="col">Timp Ramas</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($lastBans as $key => $lastBan)
-                    <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{ Str::limit($lastBan->victim_name, 5) }}</td>
-                        <td>{{ Str::limit($lastBan->admin_name, 10) }}</td>
-                        <td>{{ Str::limit($lastBan->reason, 10) }}</td>
-                        @if($lastBan->banlength != 0)
-                            <td><span class="badge bg-success">{{ round($lastBan->banlength / 60) }}h</span></td>
-                        @else
-                        <td><span class="badge bg-primary">Permanent</span></td>
-                        @endif
-                    </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                <div class="card card-dark">
+                    <div class="card-body">
+                        <table class="table table-dark m-0 ban-list">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jucator</th>
+                                <th scope="col">Administrator</th>
+                                <th scope="col">Motiv</th>
+                                <th scope="col">Timp Ramas</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($lastBans as $key => $lastBan)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ Str::limit($lastBan->victim_name, 5) }}</td>
+                                    <td>{{ Str::limit($lastBan->admin_name, 10) }}</td>
+                                    <td>{{ Str::limit($lastBan->reason, 10) }}</td>
+                                    @if($lastBan->banlength != 0)
+                                        <td><span class="badge bg-success">{{ round($lastBan->banlength / 60) }}h</span></td>
+                                    @else
+                                        <td><span class="badge bg-primary">Permanent</span></td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
                     {{--            <div class="data-table mb-3">--}}
 {{--                <div class="data-header">--}}
