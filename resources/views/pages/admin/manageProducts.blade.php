@@ -29,7 +29,7 @@
                             <td>{{ $item->created_at }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-secondary">Editeaza</button>
+                                    <a href="{{ route('app.admin.report.edit', ['id' => $item->id]) }}" class="btn btn-secondary">Editeaza</a>
                                     <form method="POST" action="{{ route('app.admin.product.remove') }}">
                                         @csrf
                                         <input type="hidden" value="{{ $item->id }}" name="id">

@@ -36,7 +36,7 @@
 </section>
 <section class="statistics mt-4">
     <h4 class="fw-ligher mb-4"><span class="unusual-text">STATISTICI</span> SI CONCURENTA</h4>
-    <div class="statistic p-3 pb-0 mb-3">
+    <div class="statistic p-3 pb-0 mb-4">
         <div class="row">
             <div class="col-md-3 mb-3">
                 <div class="statistic-bg">
@@ -104,6 +104,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-6">
             <div class="data-table table-responsive">
                 <div class="data-header">
@@ -140,31 +141,8 @@
                     </div>
                 </div>
             </div>
-                    {{--            <div class="data-table mb-3">--}}
-{{--                <div class="data-header">--}}
-{{--                    <h6 class="text-muted">Ultimele sanctiuni</h6>--}}
-{{--                </div>--}}
-{{--                <div class="data-content">--}}
-{{--                    <div class="data-content-header d-flex align-items-center">--}}
-{{--                        <p class="m-0 text-muted me-4">#</p>--}}
-{{--                        <p class="m-0 text-muted me-3">Jucator</p>--}}
-{{--                        <p class="m-0 text-muted">Administrator</p>--}}
-{{--                    </div>--}}
-{{--                    @foreach($lastBans as $key => $lastBan)--}}
-{{--                        <div class="data-column">--}}
-{{--                            <div class="d-flex align-items-center py-2">--}}
-{{--                                <p class="m-3 fw-bold text-muted">{{ $key+1 }}</p>--}}
-{{--                                <div class="d-flex justify-content-center align-items-center me-5">--}}
-{{--                                    <img class="mx-2" src="https://www.gravatar.com/avatar/8518559e5d193497ef745e329b2c93d3?s=160">--}}
-{{--                                    <p class="m-0 text-muted fw-bold">{{ Str::limit($lastBan->victim_name, 5) }}</p>--}}
-{{--                                </div>--}}
-{{--                                <p class="m-0 text-muted fw-bold">{{ Str::limit($lastBan->admin_name, 10) }}</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
+
     </div>
 </section>
 @endsection

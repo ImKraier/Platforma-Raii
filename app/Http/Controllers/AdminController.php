@@ -15,10 +15,10 @@ class AdminController extends Controller
         return view('pages.admin.users', compact('users'));
     }
 
-    public function viewManageUser($user) {
-        $getUser = User::where('id', $user)->firstOrFail();
-        return view('pages.admin.manageUser', compact('getUser'));
-    }
+//    public function viewManageUser($user) {
+//        $user = User::where('id', $user)->firstOrFail();
+//        return view('pages.profile.userProfile', compact('user'));
+//    }
 
     public function viewTickets() {
         $tickets = Tickets::orderBy('id', 'DESC')->get();

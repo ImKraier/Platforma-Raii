@@ -58,7 +58,6 @@ function changeActiveLi(data_target) {
 
 $('.mobile-collapse').click(function () {
     if(semi_sidebar_bool == true) {
-        console.log('true')
         semi_sidebar.removeClass('collapsed');
         content.removeClass('collapsed');
         semi_sidebar_bool = false;
@@ -67,7 +66,6 @@ $('.mobile-collapse').click(function () {
     } else {
         $('.mobile-collapse > i').removeClass('fa-angle-double-left')
         $('.mobile-collapse > i').addClass('fa-angle-double-right')
-        console.log('false')
         semi_sidebar.addClass('collapsed');
         content.addClass('collapsed');
         semi_sidebar_bool = true;
@@ -108,9 +106,16 @@ sidebar_li.each(function() {
     // });
 
     $(this).click(function () {
+        if($(window).width() < 1500) {
+            semi_sidebar.removeClass('collapsed');
+            content.removeClass('collapsed');
+            semi_sidebar_bool = false;
+            $('.mobile-collapse > i').removeClass('fa-angle-double-right')
+            $('.mobile-collapse > i').addClass('fa-angle-double-left')
+        }
+
         var category_list = $('.category-list.show');
         var current = $(this);
-        console.log(current.text())
         if(current.text() != active_element.text() && !$(this).find('a').length) {
             active_element.removeClass('active')
             current.addClass('active')

@@ -30,16 +30,29 @@ class ViewProfileController extends Controller
 
     public function addDescription(DescriptionRequest $request) {
         $user = User::where('id', Auth::user()->id)->first();
-        switch ($request->input('action')) {
-            case 'add':
-                $description = $request->profile_description;
-                $user->profile_description = $description;
-                $user->save();
-                return redirect()->back();
-            case 'remove':
-                $user->profile_description = 'NONE';
-                $user->save();
-                return redirect()->back();
+        if($user->id == Auth::user()->id && $user->admin_level == 0) {
+            switch ($request->input('action')) {
+                case 'add':
+                    $user->profile_description = $request->profile_description;
+                    $user->save();
+                    return redirect()->back();
+                case 'remove':
+                    $user->profile_description = 'NONE';
+                    $user->save();
+                    return redirect()->back();
+            }
+        } elseif(Auth::user()->admin_level > 0) {
+            $user = User::where('id', $request->userId)->first();
+            switch ($request->input('action')) {
+                case 'add':
+                    $user->profile_description = $request->profile_description;
+                    $user->save();
+                    return redirect()->back();
+                case 'remove':
+                    $user->profile_description = 'NONE';
+                    $user->save();
+                    return redirect()->back();
+            }
         }
     }
 }

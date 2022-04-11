@@ -73,9 +73,12 @@
                     @else
                         <p class="text-muted mt-2 mb-3"><span class="text-capitalize">{{ $user->uname }}</span> nu are nici o descriere pusa.</p>
                     @endif
-                    @if($user->id == Auth::user()->id)
+                    @if($user->id == Auth::user()->id || Auth::user()->admin_level > 0)
                         <form method="POST" action="{{ route('app.profile.description') }}">
                             @csrf
+                            @if(Auth::user()->admin_level > 0)
+                                <input type="hidden" name="userId" value="{{ $user->id }}">
+                            @endif
                             <textarea class="form-control mb-3" name="profile_description" placeholder="Descrierea ta..."></textarea>
                             <div class="d-flex">
                                 <button type="submit" class="btn btn-primary px-3 me-3" name="action" value="add">Adauga descriere</button>

@@ -6,6 +6,7 @@ use App\Mail\VerificationMail;
 use Mail;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddProductRequest;
+use App\Http\Requests\EditProductRequest;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -76,5 +77,40 @@ class ShopController extends Controller
                 return redirect()->back();
             }
         }
+    }
+
+    public function editProductView($id) {
+        $item = Shop::where('id', $id)->first();
+        return view('pages.admin.editItem', compact('item'));
+    }
+
+    public function editProductPost(EditProductRequest $request) {
+        if ($request->image == null) {
+            $item = Shop::where('id', $request->id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'price' => $request->price,
+                'product_key' => $request->product_key
+            ]);
+            if ($item) {
+                toastr()->success("Ai editat cu succes produsul");
+                return redirect()->back();
+            }
+        } else {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('items'), $imageName);
+            $item = Shop::where('id', $request->id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'price' => $request->price,
+                'product_key' => $request->product_key,
+                'image' => $imageName
+            ]);
+            if ($item) {
+                toastr()->success("Ai editat cu succes produsul");
+                return redirect()->back();
+            }
+        }
+//        return $request->all();
     }
 }

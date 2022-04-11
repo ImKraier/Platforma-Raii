@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->middleware('isAdmin')->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/', [AdminController::class, 'viewUsers'])->name('app.admin.users');
-            Route::get('/{user}', [AdminController::class, 'viewManageUser'])->name('app.admin.user');
+            Route::get('/{user}', [ViewProfileController::class, 'viewUserProfile'])->name('app.admin.user');
         });
         Route::prefix('tickets')->group(function () {
             Route::get('/', [AdminController::class, 'viewTickets'])->name('app.admin.tickets');
@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [AdminController::class, 'viewProducts'])->name('app.admin.products');
             Route::post('/add-product', [ShopController::class, 'addProduct'])->name('app.admin.product.add');
             Route::post('/remove-product', [ShopController::class, 'removeProduct'])->name('app.admin.product.remove');
+            Route::get('/edit/{id}', [ShopController::class, 'editProductView'])->name('app.admin.report.edit');
+            Route::post('/edit-validation', [ShopController::class, 'editProductPost'])->name('app.admin.report.edit.post');
         });
     });
 

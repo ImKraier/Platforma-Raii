@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Views;
 
 use App\Http\Controllers\Controller;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Models\Servers;
 use App\Models\Bans;
@@ -19,6 +20,7 @@ class ViewIndexController extends Controller
         $topPlayers = User::orderBy('played_time', 'DESC')->limit(5)->get();
         $lastBans = Bans::orderBy('id', 'DESC')->limit(5)->get();
         $user = Auth::user();
-        return view('index', compact(['servers', 'bansCount', 'usersCount', 'onlinePlayers', 'topPlayers', 'lastBans', 'user']));
+        $items = Shop::get();
+        return view('index', compact(['servers', 'bansCount', 'usersCount', 'onlinePlayers', 'topPlayers', 'lastBans', 'user', 'items']));
     }
 }
