@@ -1,4 +1,4 @@
-# 🍔 Platforma Raii - Website
+# Platforma Raii - Website
 Website made for a gaming community where whey can track players statistics and interact with each other without having to join the server.
 
 ## 🧑‍💻 Tech & Tools
